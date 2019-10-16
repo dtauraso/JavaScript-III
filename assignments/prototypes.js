@@ -176,8 +176,19 @@ c.destroy()
   inheritsFrom(Villain, Humanoid)
 
   Villain.prototype.VillanRemoveHealth = function(damage, hero) {
-      hero.human.healthPoints -= dammage
-  }
+    if(hero.human.healthPoints > 0) {
+      hero.human.healthPoints -= damage
+      if(hero.human.healthPoints === 0) {
+        // console.log("here")
+        return hero.human.destroy()
+
+      } else {
+        return `${hero.human.name} is still alive`
+      }
+
+    } else {
+      return hero.human.destroy()
+    }  }
 
   var Hero = function(name, human) {
     this.name = name
@@ -192,17 +203,34 @@ c.destroy()
         // console.log("here")
         return villain.human.destroy()
 
+      } else {
+        return `${villain.human.name} is still alive`
       }
 
     } else {
-      villain.human.destroy()
+      return villain.human.destroy()
     }
 
 }
 
 
 console.log("stretch goal")
-let aHero = new Hero("a good name", mage)
+let sordsmanHero = new Hero("a good name", new Humanoid({
+  createdAt: new Date(),
+  dimensions: {
+    length: 2,
+    width: 2,
+    height: 2,
+  },
+  healthPoints: 15,
+  name: 'Sir Mustachio',
+  team: 'The Round Table',
+  weapons: [
+    'Giant Sword',
+    'Shield',
+  ],
+  language: 'Common Tongue',
+}));
 
 // let aVillain = new Villain("a bad name", swordsman)
 const mageVillain = new Villain("really bad name", new Humanoid({
@@ -213,15 +241,18 @@ const mageVillain = new Villain("really bad name", new Humanoid({
     height: 1,
   },
   healthPoints: 5,
-  name: 'awefull name',
+  name: 'Bruce',
   team: 'Mage Guild',
   weapons: [
     'Staff of Shamalama',
   ],
   language: 'Common Tongue',
 }));
+// 1 really powerfull move
+console.log(sordsmanHero.HeroRemoveHealth(4, mageVillain))
+console.log(mageVillain.VillanRemoveHealth(5, sordsmanHero))
+console.log(sordsmanHero.HeroRemoveHealth(1, mageVillain))
 
-console.log(aHero.HeroRemoveHealth(5, mageVillain))
 // console.log(aVillain.human.healthPoints)
 
 // this code came from a SL 
