@@ -215,7 +215,7 @@ c.destroy()
 
 
 console.log("stretch goal")
-let sordsmanHero = new Hero("a good name", new Humanoid({
+let swordsmanHero = new Hero("a good name", new Humanoid({
   createdAt: new Date(),
   dimensions: {
     length: 2,
@@ -249,9 +249,9 @@ const mageVillain = new Villain("really bad name", new Humanoid({
   language: 'Common Tongue',
 }));
 // 1 really powerfull move
-console.log(sordsmanHero.HeroRemoveHealth(4, mageVillain))
-console.log(mageVillain.VillanRemoveHealth(5, sordsmanHero))
-console.log(sordsmanHero.HeroRemoveHealth(1, mageVillain))
+console.log(swordsmanHero.HeroRemoveHealth(4, mageVillain))
+console.log(mageVillain.VillanRemoveHealth(5, swordsmanHero))
+console.log(swordsmanHero.HeroRemoveHealth(1, mageVillain))
 
 // console.log(aVillain.human.healthPoints)
 
