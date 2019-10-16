@@ -30,6 +30,7 @@ GameObject.prototype.createdAt = function() {
 
 }
 GameObject.prototype.destroy = function() {
+
   return `destroy ${this.name}`
 }
 /*
@@ -54,7 +55,7 @@ CharacterStats.prototype.takeDamage = function() {
 var a = new GameObject("object a")
 
 var b = new CharacterStats(2)
-b.destroy()
+console.log(b.destroy())
 // implicit usage of this for the 2 instances created
 b.takeDamage()
 /*
@@ -188,8 +189,8 @@ c.destroy()
     if(villain.human.healthPoints > 0) {
       villain.human.healthPoints -= damage
       if(villain.human.healthPoints === 0) {
-        console.log("here")
-        villain.human.destroy()
+        // console.log("here")
+        return villain.human.destroy()
 
       }
 
@@ -200,9 +201,69 @@ c.destroy()
 }
 
 
+console.log("stretch goal")
 let aHero = new Hero("a good name", mage)
 
-let aVillain = new Villain("a bad name", swordsman)
+// let aVillain = new Villain("a bad name", swordsman)
+const mageVillain = new Villain("really bad name", new Humanoid({
+  createdAt: new Date(),
+  dimensions: {
+    length: 2,
+    width: 1,
+    height: 1,
+  },
+  healthPoints: 5,
+  name: 'awefull name',
+  team: 'Mage Guild',
+  weapons: [
+    'Staff of Shamalama',
+  ],
+  language: 'Common Tongue',
+}));
 
-aHero.HeroRemoveHealth(15, aVillain)
-console.log(aVillain.human.healthPoints)
+console.log(aHero.HeroRemoveHealth(5, mageVillain))
+// console.log(aVillain.human.healthPoints)
+
+// this code came from a SL 
+
+// function Villain(attributes) {
+//   Humanoid.call(this, attributes);
+// }
+
+// Villain.prototype = Object.create(Humanoid.prototype);
+
+// Villain.prototype.cuts = function() {
+//   console.log(`\n`);
+//   if (swordsman.healthPoints < 1) {
+//     console.log(
+//       `The Swordsman is dead and can't fight!\nThe Swordsman lost the fight!`
+//     );
+//     throw new Error("Swordsman is dead");
+//   }
+//   let hit = Math.floor(Math.random() * 10);
+//   if (hit < 2) {
+//     return `The Swordsman missed everyone!`;
+//   } else if (hit < 6) {
+//     let deathPoints = Math.floor(Math.random() * 10);
+//     mage.healthPoints -= deathPoints;
+//     console.log(
+//       `The Swordsman hit the Mage and scored ${deathPoints} points of damage, the mage has ${mage.healthPoints} health points left`
+//     );
+//     if (mage.healthPoints < 1) {
+//       return `The mage is dead!`;
+//     } else {
+//       return `Now there coming after you!!!`;
+//     }
+//   } else {
+//     let deathPoints = Math.floor(Math.random() * 10);
+//     archer.healthPoints -= deathPoints;
+//     console.log(
+//       `The Swordsman hit the Archer and scored ${deathPoints} points of damage, the archer has ${archer.healthPoints} health points left`
+//     );
+//     if (archer.healthPoints < 1) {
+//       return `The mage is dead!`;
+//     } else {
+//       return `Now there coming after you!!!`;
+//     }
+//   }
+// };
