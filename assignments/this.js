@@ -2,7 +2,7 @@
 * in your own words. explain the four principle for the "this" keyword below.
 *
 * 1.   Window binding
-    "this" defaults to the window object.  If you are in strict mode "this" is undefined
+        "this" defaults to the window object.  If you are in strict mode "this" is undefined
 * 2. 
         Implicit binding
         The "this" refers to the object it's written in.  When the function is called,
@@ -75,15 +75,16 @@ function bindExample() {
     console.log(this.name)
 }
 
-function applyExample(parameters) {
+function applyExample(a, b) {
 
-    console.log(this.name, parameters[0], parameters[1])
+    console.log(this.name, a, b)
 }
 callExample.call(myCallExample)
 
 myBind = bindExample.bind(myBindExample)
 myBind()
 
-applyExample.call(myApplyExample, ["input 1", "input 2"])
+// apply is a higher level function
+applyExample.apply(myApplyExample, ["input 1", "input 2"])
 
 

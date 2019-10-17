@@ -255,7 +255,7 @@ console.log(swordsmanHero.HeroRemoveHealth(1, mageVillain))
 
 // console.log(aVillain.human.healthPoints)
 
-// this code came from a SL 
+// this code came from a SL
 
 // function Villain(attributes) {
 //   Humanoid.call(this, attributes);
